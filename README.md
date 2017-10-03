@@ -1,0 +1,2 @@
+# dotpolybar
+My polybar config
