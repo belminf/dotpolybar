@@ -10,7 +10,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/primary]
-monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:monitor}
 width = 100%
 height = 27
 radius = 6.0
@@ -33,6 +33,32 @@ modules-center = date
 modules-right = filesystem xbacklight memory cpu wlan eth battery volume
 tray-position = right
 tray-padding = 2
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[bar/others]
+monitor = ${env:monitor}
+width = 100%
+height = 27
+radius = 6.0
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+border-size = 0
+border-color = #00000000
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
+font-0 = "FontAwesome:pixelsize=12;1"
+font-1 = fixed:pixelsize=10;1
+font-2 = siji:pixelsize=10;1
+modules-left = i3
+modules-center = date
+modules-right = xbacklight
+tray-position = 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
