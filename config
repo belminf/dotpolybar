@@ -142,7 +142,7 @@ format-disconnected =
 [module/date]
 type = internal/date
 interval = 5
-date = "%A, %B %-d"
+date = "%A, %B %d"
 time = %H:%M:%S
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
