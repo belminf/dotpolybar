@@ -1,11 +1,13 @@
 [colors]
 background-default = #00222222
 foreground-default = #dfdfdf
-underline-default = #cccccc
+underline-default = #80b3ff
 
 background-alt = #444444
 foreground-alt = #80b3ff
-foreground-center = #e6f0ff
+
+foreground-center = #ffffff
+underline-center = #8580b3ff
 
 background-alert = #bd2c40
 
@@ -94,7 +96,7 @@ date = "%A, %B %d"
 time = %H:%M
 label = %date%, %time%
 format-foreground = ${colors.foreground-center}
-format-underline = ${colors.underline-default}
+format-underline = ${colors.underline-center}
 
 [module/wlan]
 type = internal/network
@@ -102,7 +104,7 @@ interface = wlp4s0
 interval = 3.0
 label-connected = 
 format-connected = <label-connected>
-format-connected-underline = ${colors.underline-default}
+format-connected-underline = ${colors.underline-center}
 label-connected-foreground = ${colors.foreground-center}
 format-disconnected =
 
@@ -124,9 +126,9 @@ full-at = 92
 format-charging = <animation-charging>
 format-discharging = <ramp-capacity>
 format-full = <ramp-capacity>
-format-charging-underline = ${colors.underline-default}
-format-discharging-underline = ${colors.underline-default}
-format-full-underline = ${colors.underline-default}
+format-charging-underline = ${colors.underline-center}
+format-discharging-underline = ${colors.underline-center}
+format-full-underline = ${colors.underline-center}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
