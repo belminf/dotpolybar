@@ -2,12 +2,14 @@
 background-default = #00222222
 foreground-default = #dfdfdf
 underline-default = #80b3ff
+underline-dim = #50cccccc
+background-dim = #30303030
 
 background-alt = #444444
 foreground-alt = #80b3ff
 
 foreground-center = #ffffff
-underline-center = #8580b3ff
+underline-center = #9080b3ff
 
 background-alert = #bd2c40
 
@@ -32,7 +34,7 @@ font-1 = fixed:pixelsize=11;1
 font-2 = siji:pixelsize=11;1
 modules-left = i3 xwindow
 modules-center = date wlan eth battery
-modules-right = volume xbacklight
+modules-right = gpm-song xbacklight volume
 tray-position = right
 tray-padding = 3
 
@@ -54,7 +56,7 @@ font-1 = ${bar/primary.font-1}
 font-2 = ${bar/primary.font-2}
 modules-left = i3 xwindow
 modules-center = date wlan eth battery
-modules-right = xbacklight volume
+modules-right = gpm-song xbacklight volume
 
 [module/i3]
 type = internal/i3
@@ -73,6 +75,7 @@ label-focused-underline = ${colors.underline-default}
 label-focused-padding = 2
 label-unfocused = %index%
 label-unfocused-background = ${colors.background-alt}
+label-unfocused-underline = ${colors.underline-dim}
 label-unfocused-padding = 2
 label-visible = ${self.label-focused}
 label-visible-background = ${self.label-focused-background}
@@ -86,7 +89,8 @@ label-urgent-padding = ${self.label-focused-padding}
 type = internal/xwindow
 label = %title%
 label-maxlen = 100
-format-background = ${colors.background-alt}
+format-underline = ${colors.underline-dim}
+format-background = ${colors.background-dim}
 format-padding = 2
 
 [module/date]
@@ -97,6 +101,8 @@ time = %H:%M
 label = %date%, %time%
 format-foreground = ${colors.foreground-center}
 format-underline = ${colors.underline-center}
+format-background = ${colors.background-dim}
+format-padding = 2
 
 [module/wlan]
 type = internal/network
@@ -105,6 +111,8 @@ interval = 3.0
 label-connected = 
 format-connected = <label-connected>
 format-connected-underline = ${colors.underline-center}
+format-connected-background = ${colors.background-dim}
+format-connected-padding = 1
 label-connected-foreground = ${colors.foreground-center}
 format-disconnected =
 
@@ -115,6 +123,8 @@ interval = 3.0
 label-connected = 
 format-connected = ${module/wlan.format-connected}
 format-connected-underline = ${module/wlan.format-connected-underline}
+format-connected-background = ${module/wlan.format-connected-background}
+format-connected-padding = ${module/wlan.format-connected-padding}
 label-connected-foreground = ${module/wlan.label-connected-foreground}
 format-disconnected = ${module/wlan.format-disconnected}
 
@@ -129,6 +139,12 @@ format-full = <ramp-capacity>
 format-charging-underline = ${colors.underline-center}
 format-discharging-underline = ${colors.underline-center}
 format-full-underline = ${colors.underline-center}
+format-charging-background = ${colors.background-dim}
+format-discharging-background = ${colors.background-dim}
+format-full-background = ${colors.background-dim}
+format-charging-padding = 1
+format-discharging-padding = 1
+format-full-padding = 1
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
@@ -143,6 +159,15 @@ animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-center}
 animation-charging-framerate = 750
 
+[module/gpm-song]
+type = custom/script
+exec = xdotool getwindowname $(xdotool search --name '.* - Google Play Music' | head -n 1) | sed 's/ - Google Play Music//' 2> /dev/null
+exec-if = xdotool getwindowname $(xdotool search --name '.* - Google Play Music' | head -n 1) | egrep '.+ - .+ - Google Play Music'
+format-prefix = " "
+format-background = ${colors.background-dim}
+interval = 3
+label = %output%
+
 [module/volume]
 type = internal/volume
 format-volume = <label-volume> <bar-volume>
@@ -150,6 +175,7 @@ label-volume = 
 label-volume-foreground = ${colors.foreground-default}
 label-muted = " Muted"
 label-muted-foreground = ${colors.foreground-alt}
+format-background = ${colors.background-dim}
 bar-volume-width = 5
 bar-volume-foreground-0 = ${colors.foreground-alt}
 bar-volume-foreground-1 = ${colors.foreground-alt}
