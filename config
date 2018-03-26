@@ -3,9 +3,9 @@ background-default = #00222222
 foreground-default = #dfdfdf
 underline-default = #80b3ff
 underline-dim = #50cccccc
-background-dim = #30303030
+background-dim = #de000000
 
-background-alt = #444444
+background-alt = #de333333
 foreground-alt = #80b3ff
 
 foreground-center = #ffffff
